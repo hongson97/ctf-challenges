@@ -6,4 +6,9 @@ cd ctf-challenges
 ./install.sh
 ```
 
-Replace `"http://192.168.184.132:5000/uploader"` in `templates/upload.html` with your ip:port.
+Replace `"http://192.168.184.132:5000/uploader"` in `templates/upload.html` with your `ip:port`.
+
+Run with: 
+```sh
+flask run --host=0.0.0.0
+```
