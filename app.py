@@ -9,9 +9,6 @@ app.config['UPLOAD_FOLDER'] = 'upload'
 app.config['MAX_CONTENT_PATH'] = 2048
 ALLOWED_EXTENSIONS = {'zip'}
 
-@app.route('/upload')
-def upload_file():
-   return render_template('upload.html')
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -24,35 +21,43 @@ def check_format(filename):
       os.remove(filename)
    return False
 
-def get_metadata(filename):
-   proc = subprocess.Popen(["./exiftool-12.23/exiftool", filename], stdout=subprocess.PIPE)
-   (out, err) = proc.communicate()
-   os.remove(filename)
-   return out
+def format_stdout(out):
+    str_output = str(out, 'UTF-8')
+    arr_output = str_output.split("\n")
+    return arr_output
 
+def get_metadata(filename):
+    proc = subprocess.Popen(["./exiftool-12.23/exiftool", filename], stdout=subprocess.PIPE)
+    (out, err) = proc.communicate()
+    os.remove(filename)
+    str_out = format_stdout(out)
+    return str_out
+    
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file_zip():
    if request.method == 'POST':
       # check if the post request has the file part
       if 'file' not in request.files:
-         print('No file part')
-         return upload_file()
+         data_error ="Error: Input zip file."
+         render_template('upload.html',data = data_error)
       file = request.files['file']
       if file.filename == '':
-         print('No selected file')
-         return redirect(request.url)
+         data_error = "Error: No selected file."
+         render_template('upload.html',data = data_error)
       if file and allowed_file(file.filename):
          filename = secure_filename(file.filename)
          path_file = os.path.join(app.config['UPLOAD_FOLDER'], filename)
          file.save(path_file)
          if(check_format(path_file) == False):
-            return "Only ZIP format"
-         return get_metadata(path_file)
+            data_error = ["Error: File is invalid."]
+            render_template('upload.html',data = data_error)
+         data_return = get_metadata(path_file)
+         print(type(data_return))
+         return render_template('upload.html', data=data_return)
          
-      return "Only ZIP format"
+      return render_template('upload.html',data = ["Error: File is not supported."]);
    else:
-      return "Not support GET method"
+      return render_template('upload.html')
 		
 if __name__ == '__main__':
    app.run(debug = True)
-
