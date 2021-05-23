@@ -1,20 +1,94 @@
 <html>
-<head>
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Press+Start+2P"
+      rel="stylesheet"
+    />
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+  </head>
+  <body style="padding: 20px 10 0px 0px;
+    box-sizing: border-box; overflow: hidden">
 
-</head>
-   <body>
-      <form action = "http://192.168.184.138:5000/uploader" method = "POST" 
-         enctype = "multipart/form-data">
-	<label class="nes-btn">
-	  <span>Select your file</span>
-	  <input type="file" name = "file" >
-	</label>
+    <div
+      class="nes-container is-dark with-title"
+      style="width: 100%; height: 100%; display: flex; justify-content: center;"
+    >
+      <p class="title">Zip Achievement</p>
+      <div style="position: absolute; top: 50%; transform: translateY(-50%)">
 
-         <input class="nes-btn" type = "submit"/>
-      </form>   
 
-   </body>
+        <form
+          id="formUpload"
+          action="http://192.168.244.136:5000/uploader"
+          method="POST"
+          enctype="multipart/form-data"
+          style="width: fit-content"
+        >
+        <div style="display: flex; justify-content: center">
+<image src="https://i.pinimg.com/originals/f7/f8/42/	f7f8426636f185b2b9cf7e903bb53fe4.png" style="width: 150px" >
+<image src="https://i.pinimg.com/originals/f7/f8/42/	f7f8426636f185b2b9cf7e903bb53fe4.png" style="width: 150px" >
+<image src="https://i.pinimg.com/originals/f7/f8/42/	f7f8426636f185b2b9cf7e903bb53fe4.png" style="width: 150px" >
+</div>
+          <div
+            style="
+              background-color: #212529;
+              padding: 1rem 1.2rem 1rem 1rem;
+              width: calc(100% + 8px);
+            "
+            class="nes-field is-inline"
+          >
+            <label for="dark_field" style="color: #fff">File Upload</label>
+            <input
+              type="file"
+              id="dark_field"
+              class="nes-input is-dark"
+              accept=".zip"
+              name="file"
+              required
+            />
+          </div>
+          <div
+            style="
+              background-color: #212529;
+              padding: 1rem 1.2rem 1rem 1rem;
+              width: calc(100% + 8px);
+            "
+            class="nes-field is-inline"
+          >
+            <button
+              style="margin: 0 auto"
+              type="submit"
+              class="nes-btn is-primary"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+        <div class="lists" style="height: 450px;
+    overflow-x: auto;
+    width: fit-content;">
+          <ul id="render-list">   	
+          </ul>
+        </div>
+        {% if data %}
+	  <script>
+            const dataRender = {{ data | tojson }} 
+            console.log(dataRender)
+            var element = document.getElementById("render-list");
+
+            dataRender.map(el => {
+              const elRender =  document.createElement("li")
+              var text = document.createTextNode(el);
+              elRender.appendChild(text);
+              element.appendChild(elRender)
+            })
+             
+          </script>
+
+	
+	{% endif %}
+
+           
+    </div>
+  </body>
 </html>
-
