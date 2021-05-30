@@ -32,16 +32,11 @@ Biêt được đây là CVE-2021-22004 và người cho chơi thể tìm kiếm
  Ở blog giúp các bạn sinh viên hiểu rõ về bug và các tạo mã khai thác dưới định dạng jpeg. Các bạn cần nắm vững kiên thức ở quy trình tạo payload jpeg, từ đó chỉ cần một số bước nhỏ có thể tạo payload ở dạng ZIP ( cuối blog tác giả cũng đã giải thích cho các tạo payload ở định dạng zip nhưng không có mì ăn liền, vì vậy có làm mới có ăn.)
  
  
+## Install
 
 ```sh
 git clone https://github.com/hongson97/ctf-challenges.git
 cd ctf-challenges
-./install.sh
+docker-compose up
 ```
 
-Replace `"http://192.168.184.132:5000/uploader"` in `templates/upload.html` with your `ip:port`.
-
-Run with: 
-```sh
-flask run --host=0.0.0.0
-```
