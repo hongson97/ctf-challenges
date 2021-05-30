@@ -1,5 +1,7 @@
 # ctf-challenges
 
+![Zip](banner.PNG)
+
 ## Challenge:  Zip! achievement
 ## Description
 
