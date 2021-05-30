@@ -2,7 +2,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import subprocess
 import os
-import magic
+import filetype
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'upload'
@@ -15,7 +15,8 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def check_format(filename):
-   if( "zip" in magic.from_file(filename, mime=True)):
+   kind =  filetype.guess(filename)
+   if( kind.mime == 'application/zip'):
       return True
    else:
       os.remove(filename)
