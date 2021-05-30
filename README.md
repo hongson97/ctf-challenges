@@ -12,6 +12,12 @@ Give me a zip file, I will tell you all about it, including the flag in /etc/fla
 1. Do you know CVE-2021-22204
 2. I think blog of vakzz bug hunter is very interesting
 
+## Flag 
+
+```sh
+HCMUS-CTF{CVE_22204_1s_v3ry_1nt3r3st1ng}
+```
+
 ## Ý tưởng
 
 Challenge được lấy ý tưởng từ cve-2021-22204 ( cve này được sử dụng đểtạo payload dạng jpeg dùng cho việc exploit Gitlab). Đây là một trong những CVE khá nổi tiêng gần đây. Vì mã khai thác dưới dạng format hình ảnh (jpeg) đã có sẵn, nên đề ra sẽ customize lại, yêu cầu mã khai thác phải ở định dạng ZIP mới có thể lấy được flag.
