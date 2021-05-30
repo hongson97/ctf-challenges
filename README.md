@@ -34,8 +34,17 @@ Biêt được đây là CVE-2021-22004 và người cho chơi thể tìm kiếm
  
 ## Install
 
+Clone project...
+
 ```sh
 git clone https://github.com/hongson97/ctf-challenges.git
+```
+
+Replace IP api trong templates/upload.html thành IP của server deploy
+
+Chạy docker-compose...
+
+```sh
 cd ctf-challenges
 docker-compose up
 ```
