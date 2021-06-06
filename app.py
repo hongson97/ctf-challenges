@@ -51,7 +51,7 @@ def upload_file_zip():
          path_file = os.path.join(app.config['UPLOAD_FOLDER'], filename)
          file.save(path_file)
          
-         if(os.path.exists(path_file) == True or check_format(path_file) == True):
+         if(os.path.exists(path_file) == True and check_format(path_file) == True):
             data_return = get_metadata(path_file)
             return render_template('upload.html', data=data_return)
          return render_template('upload.html',data = ["Error: File is invalid."])
