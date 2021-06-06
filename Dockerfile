@@ -10,7 +10,7 @@ COPY install.sh install.sh
 RUN ["/bin/bash", "-c", "wget https://github.com/exiftool/exiftool/archive/refs/tags/12.23.zip"]
 RUN ["/bin/bash","-c","pip install -r requirements.txt"]
 RUN ["/bin/bash","-c","unzip 12.23.zip"]
-RUN ["/bin/bash","-c","echo 'HCMUS-CTF{CVE_22204_1s_v3ry_1nt3r3st1ng}' > /tmp/flag.txt"]
+RUN ["/bin/bash","-c","echo 'HCMUS-CTF{CVE_22204_1s_v3ry_1nt3r3st1ng}' > /etc/flag.txt"]
 EXPOSE 5000
 COPY . .
 CMD flask run --host=0.0.0.0
