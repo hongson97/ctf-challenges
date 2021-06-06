@@ -30,7 +30,7 @@ Giúp các bạn sinh viên biêt được file flag nằm ở /etc/flag.txt nh�
 
 ### Hint 1. Do you know CVE-2021-22204
 
-Biêt được đây là CVE-2021-22004 và người cho chơi thể tìm kiếm các blog để tạo được mã khai thác dưới định dạng dễ nhât là *Djvu* 
+Biêt được đây là CVE-2021-22204 và người cho chơi thể tìm kiếm các blog để tạo được mã khai thác dưới định dạng dễ nhât là *Djvu* 
 
 ### Hint 2: I think blog of vakzz bug hunter is very interesting
  
