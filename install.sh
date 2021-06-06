@@ -8,4 +8,4 @@ unzip 12.23.zip
 rm 12.23.zip
 
 pip3 install -r requirements.txt
-echo "HCMUS-CTF{CVE_22204_1s_v3ry_1nt3r3st1ng}" > /tmp/flag.txt
+echo "HCMUS-CTF{CVE_22204_1s_v3ry_1nt3r3st1ng}" > /etc/flag.txt
